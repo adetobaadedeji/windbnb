@@ -1,6 +1,8 @@
 import React from 'react';
 import {STAYS} from './stays'
 import CardList from './components/card-list/card-list';
+import ModalDashboard from './components/modal/modal-dashboard';
+import Header from './components/header/header';
 import './App.css';
 
 class App extends React.Component{
@@ -17,6 +19,8 @@ class App extends React.Component{
 
     return (
       <div className="App">
+        <Header/>
+        <ModalDashboard />
         <CardList stays = {this.state.stays}/>
       </div>
     );
