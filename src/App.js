@@ -46,6 +46,9 @@ const handleSearch = () => {
           children={children}
           setChildren ={setChildren}
           handleSearch = {handleSearch}
+          filteredStays = {filteredStays}
+          setFilteredStays = {setFilteredStays}
+          stays ={stays}
         />
         <CardList filteredStays = {filteredStays}/>
         {/* <Location availableCities = {availableCities} /> */}

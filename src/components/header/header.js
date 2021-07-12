@@ -16,10 +16,13 @@ const Header = ({availableCities,
     setAdults,
     children,
     setChildren,
-    handleSearch
+    handleSearch,
+    FilteredStays,
+    setFilteredStays,
+    stays
     }) => (
     <div className='header'>
-        <Logo className='logo' />
+        <Logo className='logo' onClick={() => {setFilteredStays(stays); setLocation(null); setGuests(0); setChildren(0); setAdults(0); }} />
         <FilterDashboard availableCities={availableCities}
             location ={location}
             setLocation ={setLocation}
