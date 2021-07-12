@@ -1,15 +1,40 @@
 import React from 'react';
 import './header.scss'
 import { ReactComponent as Logo } from '../../assests/logo.svg';
+import FilterDashboard from '../filter/filter';
 
-const Header = () => (
+const Header = ({availableCities, 
+    location, 
+    setLocation,
+    locationActive,
+    setLocationActive,
+    guestsActive,
+    setGuestActive,
+    guests,
+    setGuests,
+    adults,
+    setAdults,
+    children,
+    setChildren,
+    handleSearch
+    }) => (
     <div className='header'>
         <Logo className='logo' />
-        <div className='btn-group'>
-            <button>Helsinki, Finland</button>
-            <button>Add guests</button>
-            <button><span class="material-icons">search</span></button>
-        </div>
+        <FilterDashboard availableCities={availableCities}
+            location ={location}
+            setLocation ={setLocation}
+            locationActive ={locationActive}
+            setLocationActive ={setLocationActive}
+            guestsActive ={guestsActive}
+            setGuestActive ={setGuestActive}
+            guests ={guests}
+            setGuests ={setGuests}
+            adults ={adults}
+            setAdults ={setAdults}
+            children={children}
+            setChildren ={setChildren}
+            handleSearch = {handleSearch}
+        />
     </div>
 )
 

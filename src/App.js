@@ -1,31 +1,57 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import {STAYS} from './stays'
 import CardList from './components/card-list/card-list';
-import ModalDashboard from './components/modal/modal-dashboard';
 import Header from './components/header/header';
+// import Location from './components/location/location';
 import './App.css';
 
-class App extends React.Component{
-  constructor(){
-    super();
 
-    this.state ={
-      stays: STAYS
-    }
-  }
+const App = () => {
+  
+  const [stays, setStays] = useState(STAYS);
+  const [filteredStays, setFilteredStays] = useState(stays);
+  const [locationActive, setLocationActive] = useState(false);
+  const [guestsActive, setGuestActive] = useState(false);
+  const [location, setLocation] = useState(null);
+  const [guests, setGuests] = useState(0);
+  const [adults, setAdults] = useState(0);
+  const [children, setChildren] = useState(0);
+  
+ useEffect(()=>{
+     setGuests(adults + children);
+ }, [adults, children])
 
-  render(){
-    // const {stays} = this.state;
+const handleSearch = () => {
+  setFilteredStays(stays.filter((stay) => (
+    location ? stay.maxGuests >= guests && stay.city === location.split(",")[0] : stay.maxGuests >= guests
+  )));
+}
+
+  const availableCities = [...new Set(stays.map(stay => stay.city))];
 
     return (
       <div className="App">
-        <Header/>
-        <ModalDashboard />
-        <CardList stays = {this.state.stays}/>
+        <Header availableCities={availableCities}
+          location ={location}
+          setLocation ={setLocation}
+          locationActive ={locationActive}
+          setLocationActive ={setLocationActive}
+          guestsActive ={guestsActive}
+          setGuestActive ={setGuestActive}
+          guests ={guests}
+          setGuests ={setGuests}
+          adults ={adults}
+          setAdults ={setAdults}
+          children={children}
+          setChildren ={setChildren}
+          handleSearch = {handleSearch}
+        />
+        <CardList filteredStays = {filteredStays}/>
+        {/* <Location availableCities = {availableCities} /> */}
+       
       </div>
     );
-  }
-  
 }
 
 export default App;

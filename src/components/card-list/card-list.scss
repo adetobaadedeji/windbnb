@@ -1,10 +1,10 @@
-.card-list {   
-    width: 90vw;
-    margin: 2rem auto;
-    display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(395px, 1fr));
-      grid-row-gap: 3em;
-      grid-column-gap: 2em;
+.card-list{
+  width: 85vw;
+  margin:2rem auto;
+  display: grid;
+  // grid-template-columns: repeat(auto-fit, minmax(395px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 3em 2em;
 }
 
 @media (max-width: 967px) {
@@ -14,10 +14,3 @@
     }
   }
 
-// .card-list{
-//     width: 85vw;
-//     margin: auto;
-//     display: grid;
-//     grid-template-columns: 1fr 1fr 1fr;
-//     grid-gap: 3em 2em;
-// }
