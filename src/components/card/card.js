@@ -1,7 +1,7 @@
 import React from 'react';
 import './card.scss';
 
-const Card = ({city, country, superHost, title, rating, maxGuests, type, beds, photo}) => (
+const Card = ({superHost, title, rating, type, beds, photo}) => (
     <div className='card'>
         <img className='card-img' alt='room' src={photo}/>
         <div className='card-properties'>

@@ -1,11 +1,10 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import {STAYS} from './stays'
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import './App.css';
 import CardList from './components/card-list/card-list';
 import Header from './components/header/header';
-// import Location from './components/location/location';
-import './App.css';
+import { STAYS } from './stays';
 
+const AppContext = createContext();
 
 const App = () => {
   
@@ -17,9 +16,9 @@ const App = () => {
   const [guests, setGuests] = useState(0);
   const [adults, setAdults] = useState(0);
   const [children, setChildren] = useState(0);
-  
+
  useEffect(()=>{
-     setGuests(adults + children);
+     setGuests(guests => guests = adults + children);
  }, [adults, children])
 
 const handleSearch = () => {
@@ -28,33 +27,39 @@ const handleSearch = () => {
   )));
 }
 
-  const availableCities = [...new Set(stays.map(stay => stay.city))];
+ const availableCities = [...new Set(stays.map(stay => stay.city))];
 
-    return (
+ const value ={
+    stays,
+    setStays,
+    filteredStays,
+    setFilteredStays,
+    locationActive,
+    setLocationActive,
+    guestsActive,
+    setGuestActive,
+    location,
+    setLocation,
+    guests,
+    setGuests,
+    adults,
+    setAdults,
+    children,
+    setChildren,
+    handleSearch,
+    availableCities
+  };
+
+  return (
       <div className="App">
-        <Header availableCities={availableCities}
-          location ={location}
-          setLocation ={setLocation}
-          locationActive ={locationActive}
-          setLocationActive ={setLocationActive}
-          guestsActive ={guestsActive}
-          setGuestActive ={setGuestActive}
-          guests ={guests}
-          setGuests ={setGuests}
-          adults ={adults}
-          setAdults ={setAdults}
-          children={children}
-          setChildren ={setChildren}
-          handleSearch = {handleSearch}
-          filteredStays = {filteredStays}
-          setFilteredStays = {setFilteredStays}
-          stays ={stays}
-        />
-        <CardList filteredStays = {filteredStays}/>
-        {/* <Location availableCities = {availableCities} /> */}
-       
-      </div>
-    );
+        <AppContext.Provider value={value}>
+            <Header/>
+            <CardList/>
+        </AppContext.Provider>
+    </div>
+  );
 }
+
+export const useAppContext = () => useContext(AppContext);
 
 export default App;

@@ -1,16 +1,18 @@
 import React from 'react';
 import Card from '../card/card';
 import './card-list.scss';
-// import Modal from '../modal/modal';
+import { useAppContext } from '../../App';
 
-const CardList = (props) => (
+const CardList = () => {
+  const { filteredStays } = useAppContext();
+  return(
     <div className='card-list'>
          {
-          props.filteredStays.map(({...allStayProps}, index) => (
+          filteredStays.map(({...allStayProps}, index) => (
             <Card key ={index} {...allStayProps}/>
           )) 
         }
     </div>     
-)
+)}
 
 export default CardList;
