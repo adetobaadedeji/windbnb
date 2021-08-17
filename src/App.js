@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import './App.css';
-import CardList from './components/card-list/card-list';
+import CardPage from './components/card-page/card-page';
 import Header from './components/header/header';
 import { STAYS } from './stays';
 
@@ -54,7 +54,7 @@ const handleSearch = () => {
       <div className="App">
         <AppContext.Provider value={value}>
             <Header/>
-            <CardList/>
+            <CardPage/>
         </AppContext.Provider>
     </div>
   );

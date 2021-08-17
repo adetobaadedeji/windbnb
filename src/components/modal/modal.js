@@ -54,7 +54,7 @@ const Modal = ({modalOpen, toggleModal}) => {
                 { guestsActive &&
                 <div className='guest-filter'>
                     <div className='guest-count'>
-                        <div className='gues-count-title'>Adults</div>
+                        <div className='guest-count-title'>Adults</div>
                         <div className='guest-count-age'>Ages 13 or above</div>
                         <div className='guest-count-counter'>
                             <button className='guest-count-counter-decrease'onClick={() => `${adults > 0 && setAdults(adults => adults - 1)}`}> - </button>
